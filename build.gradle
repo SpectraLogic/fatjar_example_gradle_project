@@ -1,0 +1,27 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+version = '1.0.0'
+group = 'com.spectralogic.test'
+
+mainClassName = "Main"
+
+repositories {
+  mavenCentral()
+  mavenLocal()
+  maven {
+    url 'http://dl.bintray.com/spectralogic/ds3'
+  }
+}
+
+dependencies {
+  compile 'org.slf4j:slf4j-api:1.7.20'
+  compile 'org.slf4j:slf4j-simple:1.7.20'
+  compile ('com.spectralogic.ds3:ds3-sdk:3.2.0-RC9:all') {
+    transitive = false
+  }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.12'
+}
